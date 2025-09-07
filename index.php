@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="app/plugins/fontawesome-free/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="app/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="app/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     <!-- Theme style -->
@@ -90,6 +92,44 @@
     <script src="app/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="app/dist/js/adminlte.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="app/plugins/sweetalert2/sweetalert2.min.js"></script>
 </body>
+
+<?php
+if (isset($_GET['error'])) {
+    $x = $_GET['error'];
+    if ($x == 1) {
+        echo "<script>
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    Toast.fire({
+        icon: 'error',
+        title: 'Username/Password Salah'
+    })
+    </script>";
+    } elseif ($x == 2) {
+        echo "<script>
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+    Toast.fire({
+        icon: 'info',
+        title: 'Silahkan Inputkan Username & Password'
+    })
+    </script>";
+    } else {
+        echo "";
+    }
+}
+?>
+
 
 </html>
