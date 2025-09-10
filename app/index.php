@@ -3,6 +3,9 @@
 
 <?php
 session_start();
+if (!$_SESSION['nama']) {
+  header('Location:../index.php?session=expired');
+}
 include('header.php'); ?>
 
 <?php include('../config/config.php'); ?>
