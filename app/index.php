@@ -44,6 +44,8 @@ include('header.php'); ?>
           include('dashboard.php');
         } elseif ($_GET['page'] == 'data-mahasiswa') {
           include('data_mahasiswa.php');
+        } elseif ($_GET['page'] == 'edit-data') {
+          include('edit/edit_data.php');
         } else {
           include('not_found.php');
         }
