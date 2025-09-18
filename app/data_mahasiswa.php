@@ -24,35 +24,40 @@
                             </thead>
                             <tbody>
                                 <?php
-                $no = 0;
-                $query = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa");
-                while ($mhs = mysqli_fetch_array($query)) {
-                  $no++
-                ?>
-                                <tr>
-                                    <td width='4%'><?= $no; ?></td>
-                                    <td><?= $mhs['nama']; ?></td>
-                                    <td><?= $mhs['nim']; ?></td>
-                                    <td><?= $mhs['semester']; ?></td>
-                                    <td>
-                                        <a href="index.php?page=edit-data&&id=<?= $mhs['id']; ?>"
-                                            class="btn btn-success btn-sm">Edit</a>
-                                        <a onclick="hapus_data(<?= $mhs['id']; ?>)"
-                                            class="btn btn-danger btn-sm">Hapus</a>
-                                    </td>
-                                </tr>
+                                $no = 0;
+                                $query = mysqli_query($koneksi, "SELECT * FROM tb_mahasiswa");
+                                while ($mhs = mysqli_fetch_array($query)) {
+                                    $no++
+                                ?>
+                                    <tr>
+                                        <td width='4%'><?= $no; ?></td>
+                                        <td><?= $mhs['nama']; ?></td>
+                                        <td><?= $mhs['nim']; ?></td>
+                                        <td><?= $mhs['semester']; ?></td>
+                                        <td>
+                                            <a href="#" class="view-data btn btn-primary btn-sm" data-toggle="modal"
+                                                data-target="#modal-view" data-nama="<?= $mhs['nama']; ?>"
+                                                data-nim="<?= $mhs['nim']; ?>" data-semester="<?= $mhs['semester']; ?>">
+                                                View Data
+                                            </a>
+                                            <a href="index.php?page=edit-data&&id=<?= $mhs['id']; ?>"
+                                                class="btn btn-success btn-sm">Edit</a>
+                                            <a onclick="hapus_data(<?= $mhs['id']; ?>)"
+                                                class="btn btn-danger btn-sm">Hapus</a>
+                                        </td>
+                                    </tr>
                             </tbody>
-                            <?php
-                } ?>
-                            <tfoot>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama</th>
-                                    <th>NIM</th>
-                                    <th>Semester</th>
-                                    <th>Action</th>
-                                </tr>
-                            </tfoot>
+                        <?php
+                                } ?>
+                        <tfoot>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama</th>
+                                <th>NIM</th>
+                                <th>Semester</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -68,12 +73,11 @@
 <!-- /.content -->
 
 <!-- /.modal -->
-
 <div class="modal fade" id="modal-lg">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Large Modal</h4>
+                <h4 class="modal-title">Tambah Data</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -112,24 +116,47 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
+<!-- /.modal-view-data -->
+<div class="modal fade" id="modal-view">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">View Data</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="get" action="add/tambah_data.php">
+                <div class="modal-body" id="hasil-view-data">
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <!-- /.modal -->
 
 <script>
-function hapus_data(data_id) {
-    // alert('ok');
+    function hapus_data(data_id) {
+        // alert('ok');
 
-    Swal.fire({
-        title: "Apakah Anda Yakin Menghapus?",
-        showDenyButton: false,
-        showCancelButton: true,
-        confirmButtonText: "Hapus",
-        confirmButtonColor: "#dc3545",
-        // denyButtonText: `Don't save`
-    }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-            window.location = ("delete/hapus_data.php?id=" + data_id);
-        }
-    });
-}
+        Swal.fire({
+            title: "Apakah Anda Yakin Menghapus?",
+            showDenyButton: false,
+            showCancelButton: true,
+            confirmButtonText: "Hapus",
+            confirmButtonColor: "#dc3545",
+            // denyButtonText: `Don't save`
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                window.location = ("delete/hapus_data.php?id=" + data_id);
+            }
+        });
+    }
 </script>

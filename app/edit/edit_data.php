@@ -11,7 +11,7 @@ $view = mysqli_fetch_array($query);
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <form method="get" action="update/update_data.php">
+                <form method="post" action="update/update_data.php" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-sm-6">
                             <!-- text input -->
@@ -36,7 +36,8 @@ $view = mysqli_fetch_array($query);
                             <div class="form-group">
                                 <label>Semester</label>
                                 <select class="custom-select" id="inputGroupSelect01" name="semester">
-                                    <option value="<?= $view['semester']; ?>" selected><?= $view['semester']; ?>
+                                    <option value="<?= $view['semester']; ?>" selected>
+                                        <?= $view['semester']; ?>
                                     </option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -49,11 +50,22 @@ $view = mysqli_fetch_array($query);
                                 </select>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <label for="formFile" class="form-label">Upload Foto</label>
+                            <input name="foto" class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <img width="100px" class="rounded mx-auto d-block" src="dist/img/foto/<?= $view['foto']; ?>"
+                            alt="foto">
                     </div>
                     <button type="submit" class="btn btn-sm btn-info">Simpan</button>
-                </form>
             </div>
-            <!-- /.card-body -->
         </div>
+    </div>
+    </form>
+    </div>
+    <!-- /.card-body -->
+    </div>
     </div>
 </section>
