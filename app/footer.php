@@ -102,6 +102,31 @@
                 }
             });
             console.log(nim);
+        });
 
-        })
+        $('.view-pembayaran').click(function() {
+            // var nama = $(this).attr('data-nama');
+            var nim = $(this).attr('data-nim');
+            // var semester = $(this).attr('data-semester');
+            $.ajax({
+                method: "POST",
+                url: "view/view-data-pembayaran.php",
+                dataType: "html",
+                data: {
+                    // nama: nama,
+                    nim: nim,
+                    // semester: semester
+                },
+                success: function(data) {
+                    $('#hasil-view-pembayaran').html(data);
+                }
+            });
+            console.log(nim);
+        });
+
+        $(document).ready(function() {
+            setInterval(function() {
+                $('#report-mhs').load("banner.php");
+            }, 1000);
+        });
     </script>

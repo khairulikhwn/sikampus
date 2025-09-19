@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="app/dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('paper.png'); background-size:cover">
     <div class="login-box">
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">

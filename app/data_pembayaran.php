@@ -35,15 +35,8 @@
                                         <td><?= $mhs['nim']; ?></td>
                                         <td><?= $mhs['semester']; ?></td>
                                         <td>
-                                            <a href="#" class="view-data btn btn-primary btn-sm" data-toggle="modal"
-                                                data-target="#modal-view" data-nama="<?= $mhs['nama']; ?>"
-                                                data-nim="<?= $mhs['nim']; ?>" data-semester="<?= $mhs['semester']; ?>">
-                                                View Data
-                                            </a>
-                                            <a href="index.php?page=edit-data&&id=<?= $mhs['id']; ?>"
-                                                class="btn btn-success btn-sm">Edit</a>
-                                            <a onclick="hapus_data(<?= $mhs['id']; ?>)"
-                                                class="btn btn-danger btn-sm">Hapus</a>
+                                            <a class="view-pembayaran btn btn-warning" data-nim="<?= $mhs['nim']; ?>">View
+                                                Pembayaran</a>
                                         </td>
                                     </tr>
                             </tbody>
@@ -62,6 +55,13 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+                <!-- view data pembayaran -->
+                <div id="hasil-view-pembayaran">
+
+                </div>
+                <?php // include('view/view-data-pembayaran.php'); 
+                ?>
+                <!-- view data pembayaran -->
                 <!-- /.card -->
             </div>
             <!-- /.col -->
