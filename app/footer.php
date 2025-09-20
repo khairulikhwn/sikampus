@@ -20,7 +20,7 @@
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+$.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -66,67 +66,67 @@
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
+$(function() {
+    $("#example1").DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+});
 
-        $('.view-data').click(function() {
-            var nama = $(this).attr('data-nama');
-            var nim = $(this).attr('data-nim');
-            var semester = $(this).attr('data-semester');
-            $.ajax({
-                method: "POST",
-                url: "view/view-data-mahasiswa.php",
-                dataType: "html",
-                data: {
-                    nama: nama,
-                    nim: nim,
-                    semester: semester
-                },
-                success: function(data) {
-                    $('#hasil-view-data').html(data);
-                }
-            });
-            console.log(nim);
-        });
+$('.view-data').click(function() {
+    var nama = $(this).attr('data-nama');
+    var nim = $(this).attr('data-nim');
+    var semester = $(this).attr('data-semester');
+    $.ajax({
+        method: "POST",
+        url: "view/view-data-mahasiswa.php",
+        dataType: "html",
+        data: {
+            nama: nama,
+            nim: nim,
+            semester: semester
+        },
+        success: function(data) {
+            $('#hasil-view-data').html(data);
+        }
+    });
+    console.log(nim);
+});
 
-        $('.view-pembayaran').click(function() {
-            // var nama = $(this).attr('data-nama');
-            var nim = $(this).attr('data-nim');
-            // var semester = $(this).attr('data-semester');
-            $.ajax({
-                method: "POST",
-                url: "view/view-data-pembayaran.php",
-                dataType: "html",
-                data: {
-                    // nama: nama,
-                    nim: nim,
-                    // semester: semester
-                },
-                success: function(data) {
-                    $('#hasil-view-pembayaran').html(data);
-                }
-            });
-            console.log(nim);
-        });
+$('.view-pembayaran').click(function() {
+    var nama = $(this).attr('data-nama');
+    var nim = $(this).attr('data-nim');
+    // var semester = $(this).attr('data-semester');
+    $.ajax({
+        method: "POST",
+        url: "view/view-data-pembayaran.php",
+        dataType: "html",
+        data: {
+            nama: nama,
+            nim: nim,
+            // semester: semester
+        },
+        success: function(data) {
+            $('#hasil-view-pembayaran').html(data);
+        }
+    });
+    console.log(nim);
+});
 
-        $(document).ready(function() {
-            setInterval(function() {
-                $('#report-mhs').load("banner.php");
-            }, 1000);
-        });
+$(document).ready(function() {
+    setInterval(function() {
+        $('#report-mhs').load("banner.php");
+    }, 1000);
+});
     </script>
